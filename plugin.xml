@@ -20,9 +20,14 @@
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
+        <js-module src="www/shake-ios.js" name="Shake">
+            <clobbers target="shake" />
+        </js-module>
 
         <header-file src="src/ios/CDVShake.h" />
         <source-file src="src/ios/CDVShake.m" />
+        <header-file src="src/ios/CDVViewController+MotionEvents.h" />
+        <source-file src="src/ios/CDVViewController+MotionEvents.m" />
     </platform>
 
 </plugin>

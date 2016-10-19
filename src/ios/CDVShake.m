@@ -17,12 +17,20 @@
 
 #import "CDVShake.h"
 #import <Cordova/CDV.h>
+#import <objc/runtime.h>
 
 @implementation CDVShake
 
 - (void)pluginInitialize
 {
-	[UIApplication sharedApplication].applicationSupportsShakeToEdit = NO;
+    [UIApplication sharedApplication].applicationSupportsShakeToEdit = NO;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake)
+    {
+        [self.webViewEngine evaluateJavaScript:@"shake.didShake()" completionHandler:nil];
+    }
 }
 
 @end
